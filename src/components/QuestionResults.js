@@ -17,6 +17,7 @@ class QuestionResults extends Component {
                     text={optionTwo.text}
                     votes={optionTwo.votes}
                     total={total}
+                    authedUser={authedUser}
                 />
             </div>
         )
