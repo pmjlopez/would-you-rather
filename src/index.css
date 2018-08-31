@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.card-list {
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
+}
+.card {
+    margin-bottom: 1em;
+}
+.card .header img {
+    width: 100%;
+}
