@@ -115,6 +115,8 @@ let questions = {
     },
 }
 
+let authedUser = ''
+
 function generateUID () {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
@@ -198,5 +200,23 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
 
             res()
         }, 500)
+    })
+}
+
+export function _saveAuthedUser (id) {
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            authedUser = id
+            res()
+        }, 0)
+    })
+}
+
+export function _deleteAuthedUser () {
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            authedUser = ''
+            res()
+        }, 0)
     })
 }
