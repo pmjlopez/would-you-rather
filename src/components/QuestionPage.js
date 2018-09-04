@@ -11,14 +11,11 @@ class QuestionPage extends Component {
         const votedTwo = optionTwo.votes.includes(authedUser)
 
         return (
-            <div className='card'>
-                <div className='header'>
-                    <p>{`${user.name} asks:`}</p>
+            <div className='card text-dark'>
+                <div className='card-header'>
+                    {`${user.name} asks:`}
                 </div>
-                <div className='content'>
-                    <img src={user.avatarURL} alt={user.name}/>
-                </div>
-
+                <img src={user.avatarURL} alt={user.name} className='card-img-top'/>
                 {(votedOne || votedTwo) && (
                     <QuestionResults id={question.id}/>
                 )}

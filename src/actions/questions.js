@@ -33,22 +33,23 @@ export function receiveQuestions (questions) {
     }
 }
 
-function answerQuestion ({qid, authedUser, answer}) {
+function answerQuestion (info) {
     return {
         type: ANSWER_QUESTION,
-        qid,
-        authedUser,
-        answer
+        info
     }
 }
 
 export function handleAnswerQuestion (info) {
     return (dispatch) => {
-        dispatch(answerQuestion(info))
+        dispatch(showLoading())
         return saveQuestionAnswer(info)
+            .then(() => dispatch(answerQuestion(info)))
+            .then(() => dispatch(hideLoading()))
             .catch((e) => {
                 console.warn(`Error in handleAnswerQuestion: `, e)
                 alert(`There was an error in answering the question. Try again.`)
+                dispatch(hideLoading())
             })
     }
 }

@@ -13,18 +13,20 @@ class Question extends Component {
         const { id, optionOne, optionTwo } = question
 
         return (
-            <Link to={`/questions/${id}`}>
-                <div className='card'>
-                    <div className='header'>
-                        <img src={user.avatarURL} alt={user.name}/>
-                        <p>{`${user.name} asks:`}</p>
+            <Link to={`/questions/${id}`} className='card-deck'>
+                <div className='card text-dark border-dark'>
+                    <div className='card-header'>
+                        {`${user.name} asks:`}
                     </div>
-                    <div className='content'>
-                        <p>Would you rather</p>
-                        <p>{optionOne.text}</p>
-                        <p>OR</p>
-                        <p>{optionTwo.text}</p>
+                    <img src={user.avatarURL} alt={user.name} className='card-img-top'/>
+                    <div className='card-body text-center'>
+                        <h5 className='card-title'>Would you rather...</h5>
                     </div>
+                    <ul className='list-group text-center'>
+                        <li className='list-group-item'>{optionOne.text}</li>
+                        <li className='list-group-item'>OR</li>
+                        <li className='list-group-item'>{optionTwo.text}</li>
+                    </ul>
                 </div>
             </Link>
         );
