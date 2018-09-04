@@ -4,14 +4,14 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-.card-list {
-    list-style: none;
-    margin-left: 0;
-    padding: 0;
+.card-text .badge {
+    margin-left: 0.5em;
 }
-.card {
-    margin-bottom: 1em;
+
+.nav img {
+    height: 30px;
 }
-.card .header img {
-    width: 100%;
+
+.navbar-brand img {
+    margin-left: 1em;
 }
