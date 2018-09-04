@@ -6,7 +6,7 @@ class QuestionResults extends Component {
     render () {
         const { optionOne, optionTwo, authedUser, total } = this.props
         return (
-            <div>
+            <div className='card-body'>
                 <Option
                     text={optionOne.text}
                     votes={optionOne.votes}
