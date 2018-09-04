@@ -1,19 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { handleAnswerQuestion } from "../actions/questions"
 
 class QuestionForm extends Component {
     handleSelect = (e) => {
-        console.log('Selected', e.target.value)
+        const option = e.target.value
+        const { dispatch, question, authedUser } = this.props
+        dispatch(handleAnswerQuestion({
+            qid: question.id,
+            authedUser,
+            answer: option
+        }))
     }
     render() {
         const OPTION_ONE = 'optionOne'
         const OPTION_TWO = 'optionTwo'
-        const { optionOne, optionTwo, authedUser } = this.props
+        const { optionOne, optionTwo } = this.props
         return (
-            <form>
-                <h4>Would you rather...</h4>
-                <ul>
-                    <li>
+            <Fragment>
+                <div className='card-body'>
+                    <h5 className='card-title'>Would you rather...</h5>
+                </div>
+                <ul className='list-group'>
+                    <li className='list-group-item'>
                         <input
                             type='radio'
                             name='answer'
@@ -22,7 +31,7 @@ class QuestionForm extends Component {
                         />
                         {optionOne.text}
                     </li>
-                    <li>
+                    <li className='list-group-item'>
                         <input
                             type='radio'
                             name='answer'
@@ -32,7 +41,7 @@ class QuestionForm extends Component {
                         {optionTwo.text}
                     </li>
                 </ul>
-            </form>
+            </Fragment>
         )
     }
 }
@@ -44,7 +53,8 @@ function mapStateToProps ({authedUser, users, questions}, {id}) {
     return {
         authedUser,
         optionOne,
-        optionTwo
+        optionTwo,
+        question
     }
 }
 
