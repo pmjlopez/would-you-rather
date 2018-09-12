@@ -40,7 +40,6 @@ class Dashboard extends Component {
         }))
     }
     render() {
-        console.log('Question IDs', this.state.questionIds)
         return (
             <div className='container'>
                 <h3 className='center'>
@@ -80,7 +79,7 @@ function mapStateToProps ({ questions, users, authedUser }) {
     return {
         user: users[authedUser],
         questionIds: Object.keys(questions)
-            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
     }
 }
 
