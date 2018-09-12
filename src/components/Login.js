@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleSetAuthedUser } from "../actions/authedUser";
+import { setAuthedUser } from "../actions/authedUser"
 
 class Login extends Component {
     handleChangeUser = (e) => {
         const { dispatch } = this.props
         const id = e.target.value
-        dispatch(handleSetAuthedUser(id))
+        dispatch(setAuthedUser(id))
     }
     render() {
         const { userIds, users } = this.props
