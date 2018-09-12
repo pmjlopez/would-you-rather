@@ -1,7 +1,5 @@
-import { getUsers } from '../utils/api'
-import { showLoading, hideLoading } from 'react-redux-loading'
-
 export const RECEIVE_USERS = 'RECEIVE_USERS'
+export const USER_ANSWER = 'USER_ANSWER'
 
 export function receiveUsers (users) {
     return {
@@ -10,16 +8,9 @@ export function receiveUsers (users) {
     }
 }
 
-export function handleReceiveUsers () {
-    return (dispatch) => {
-        dispatch(showLoading())
-        return getUsers()
-            .then((users) => dispatch(receiveUsers(users)))
-            .then(() => dispatch(hideLoading()))
-            .catch((e) => {
-                console.warn('There was an error in handleReceiveUsers. Try again', e)
-                alert(`There was an error in receiving users. Try again.`)
-                dispatch(hideLoading())
-            })
+export function userAnswer(info) {
+    return {
+        type: USER_ANSWER,
+        info
     }
 }
