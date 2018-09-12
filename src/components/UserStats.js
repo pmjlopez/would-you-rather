@@ -5,19 +5,30 @@ class UserStats extends Component {
         const { user } = this.props
         return (
             <div className='card'>
-                <div className='card-body'>
-                    <img src={user.avatarURL} alt={user.name} className='card-img'/>
-                    <h5 className='card-title'>{user.name}</h5>
-                    <ul>
-                        <li>
-                            Answered questions {user.answeredQuestions}
-                        </li>
-                        <li>Created questions {user.createdQuestions}</li>
-                    </ul>
-                    <p>Score {user.score}</p>
+                <div className='card-header'>
+                    <img src={user.avatarURL} alt={user.name} className='card-header-avatar'/>
+                    {user.name}
+                </div>
+                <div className='card-body row'>
+                    <div className='col col-9'>
+                        <ul className='list-group user-stats'>
+                            <li className='list-group-item'>
+                                Answered questions
+                                <span>{user.answeredQuestions}</span>
+                            </li>
+                            <li className='list-group-item'>
+                                Created questions
+                                <span>{user.createdQuestions}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='col col-3 user-score'>
+                        Score
+                        <div>{user.score}</div>
+                    </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 

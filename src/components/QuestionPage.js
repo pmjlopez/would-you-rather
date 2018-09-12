@@ -5,17 +5,23 @@ import QuestionForm from "./QuestionForm";
 
 class QuestionPage extends Component {
     render() {
-        const { user, question, authedUser } = this.props
+        const { users, questions, authedUser, id } = this.props
+        const question = questions[id]
         const { optionOne, optionTwo } = question
+        const user = users[question.author]
         const votedOne = optionOne.votes.includes(authedUser)
         const votedTwo = optionTwo.votes.includes(authedUser)
 
         return (
             <div className='card text-dark'>
                 <div className='card-header'>
+                    <img
+                        src={user.avatarURL}
+                        alt={user.name}
+                        className='card-header-avatar'
+                    />
                     {`${user.name} asks:`}
                 </div>
-                <img src={user.avatarURL} alt={user.name} className='card-img-top'/>
                 {(votedOne || votedTwo) && (
                     <QuestionResults id={question.id}/>
                 )}
@@ -31,12 +37,11 @@ class QuestionPage extends Component {
 
 function mapStateToProps ({ authedUser, users, questions }, props) {
     const { id } = props.match.params
-    const question = questions[id]
-    const user = users[question.author]
     return {
         authedUser,
-        question,
-        user
+        questions,
+        users,
+        id
     }
 }
 
