@@ -1,12 +1,18 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from "../actions/questions"
+import { userAnswer } from "../actions/users"
 
 class QuestionForm extends Component {
     handleSelect = (e) => {
         const option = e.target.value
         const { dispatch, question, authedUser } = this.props
         dispatch(handleAnswerQuestion({
+            qid: question.id,
+            authedUser,
+            answer: option
+        }))
+        dispatch(userAnswer({
             qid: question.id,
             authedUser,
             answer: option
