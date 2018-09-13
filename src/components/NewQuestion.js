@@ -17,12 +17,13 @@ class NewQuestion extends Component {
     }
     handleAddQuestion = (e) => {
         e.preventDefault()
-        const { dispatch } = this.props
+        const { dispatch, history } = this.props
         const { optionOneText, optionTwoText } = this.state
         dispatch(handleAddQuestion(
             optionOneText,
             optionTwoText
         ))
+        history.push('/')
     }
     render() {
         return (
