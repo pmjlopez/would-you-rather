@@ -11,7 +11,7 @@ class Login extends Component {
     render() {
         const { userIds, users } = this.props
         return (
-            <div className='container text-center'>
+            <div className='container text-center mt-4'>
                 <h5>Login</h5>
                 <select onChange={this.handleChangeUser}>
                     <option value=''>Select User</option>
@@ -20,7 +20,7 @@ class Login extends Component {
                     ))}
                 </select>
             </div>
-        );
+        )
     }
 }
 
