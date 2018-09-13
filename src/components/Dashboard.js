@@ -40,6 +40,7 @@ class Dashboard extends Component {
         }))
     }
     render() {
+        const { tab, questionIds } = this.state
         return (
             <div className='container'>
                 <h3 className='center'>
@@ -49,7 +50,7 @@ class Dashboard extends Component {
                     <li className='nav-item'>
                         <button
                             onClick={() => this.handleFilterQuestions(UNANSWERED_QUESTIONS)}
-                            className={`nav-link ${this.state.tab === UNANSWERED_QUESTIONS ? 'active' : ''}`}
+                            className={`nav-link ${tab === UNANSWERED_QUESTIONS ? 'active' : ''}`}
                         >
                             Unanswered Questions
                         </button>
@@ -57,14 +58,19 @@ class Dashboard extends Component {
                     <li className='nav-item'>
                         <button
                             onClick={() => this.handleFilterQuestions(ANSWERED_QUESTIONS)}
-                            className={`nav-link ${this.state.tab === ANSWERED_QUESTIONS ? 'active' : ''}`}
+                            className={`nav-link ${tab === ANSWERED_QUESTIONS ? 'active' : ''}`}
                         >
                             Answered Questions
                         </button>
                     </li>
                 </ul>
                 <div className='row'>
-                    {this.state.questionIds.map((id) => (
+                    {!(questionIds.length > 0) && (
+                        <div className={`col`}>
+                            <p className={`m-4 text-center`}>No questions to show.</p>
+                        </div>
+                    )}
+                    {questionIds.map((id) => (
                         <div key={id} className='col-lg-4'>
                             <Question id={id}/>
                         </div>
