@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import UserStats from './UserStats'
+import { UserStats } from '../components'
 
 class LeaderBoard extends Component {
     render() {

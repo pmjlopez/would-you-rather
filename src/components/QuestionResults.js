@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Option from './Option'
+import { Option } from '../components'
 
 class QuestionResults extends Component {
     render () {

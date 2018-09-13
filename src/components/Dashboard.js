@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import { Question } from '../components'
 
 const UNANSWERED_QUESTIONS = 'UNANSWERED_QUESTIONS'
 const ANSWERED_QUESTIONS = 'ANSWERED_QUESTIONS'
