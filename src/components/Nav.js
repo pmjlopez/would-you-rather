@@ -4,16 +4,25 @@ import { connect } from 'react-redux'
 import { unsetAuthedUser } from "../actions/authedUser"
 
 class Nav extends Component {
+    state = {
+        showMenu: false
+    }
     handleLogout = (e) => {
         const { dispatch } = this.props
         dispatch(unsetAuthedUser())
     }
+    handleNavClick = (e) => {
+        this.setState((state) => ({
+            showMenu: state.showMenu ? false : true
+        }))
+    }
     render() {
         const { user } = this.props
+        const { showMenu } = this.state
         return (
             <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                        data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -22,16 +31,16 @@ class Nav extends Component {
                     <img src={user.avatarURL} width="30" height="30"
                          className="d-inline-block align-top" alt={user.name}/>
                 </span>
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <div className={`collapse navbar-collapse ${showMenu}`} id="navbarToggler">
                     <ul className='navbar-nav mr-auto'>
                         <li className='nav-item'>
-                            <NavLink className='nav-link' to='/'>Home</NavLink>
+                            <NavLink onClick={this.handleNavClick} className='nav-link' to='/'>Home</NavLink>
                         </li>
                         <li className='nav-item'>
-                            <NavLink className='nav-link' to='/add'>New Question</NavLink>
+                            <NavLink onClick={this.handleNavClick} className='nav-link' to='/add'>New Question</NavLink>
                         </li>
                         <li className='nav-item'>
-                            <NavLink className='nav-link' to='/leaderboard'>Leader Board</NavLink>
+                            <NavLink onClick={this.handleNavClick} className='nav-link' to='/leaderboard'>Leader Board</NavLink>
                         </li>
                         <li className='nav-item'>
                             <a
