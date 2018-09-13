@@ -3,12 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from 'react-redux-loading'
-import Nav from './Nav'
-import Dashboard from './Dashboard'
-import QuestionPage from './QuestionPage'
-import Login from './Login'
-import NewQuestion from './NewQuestion'
-import LeaderBoard from './LeaderBoard'
+import { QuestionPage, Login, NewQuestion, LeaderBoard, Page404, Dashboard, Nav } from '../components'
 
 class App extends Component {
     componentDidMount() {
@@ -28,8 +23,9 @@ class App extends Component {
                                     : <div>
                                         <Route path='/' exact component={Dashboard}/>
                                         <Route path='/questions/:id' component={QuestionPage}/>
-                                        <Route path='/new' component={NewQuestion}/>
-                                        <Route path='/leader-board' component={LeaderBoard}/>
+                                        <Route path='/add' component={NewQuestion}/>
+                                        <Route path='/leaderboard' component={LeaderBoard}/>
+                                        <Route path='/404' component={Page404}/>
                                     </div>
                                 }
                             </div>

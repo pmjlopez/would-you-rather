@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import QuestionResults from './QuestionResults'
-import QuestionForm from "./QuestionForm";
+import { Redirect } from 'react-router-dom'
+import { QuestionResults, QuestionForm } from '../components'
 
 class QuestionPage extends Component {
     render() {
         const { users, questions, authedUser, id } = this.props
         const question = questions[id]
+
+        console.log('Question: ', question)
+
+        if (!question) {
+            return (
+                <Redirect to={'/404'}/>
+            )
+        }
+
         const { optionOne, optionTwo } = question
         const user = users[question.author]
         const votedOne = optionOne.votes.includes(authedUser)
